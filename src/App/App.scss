@@ -35,3 +35,12 @@
     transform: rotate(360deg);
   }
 }
+
+.dogPenDiv,
+.staffRoomDiv {
+  border: 2px solid black;
+}
+
+.staffRoomDiv {
+  margin-top: 10px;
+}

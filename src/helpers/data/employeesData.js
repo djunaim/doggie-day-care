@@ -23,6 +23,12 @@ const employees = [
     lastName: 'Barkus',
     phoneNumber: '203-867-1112',
   },
+  {
+    id: 'employee5',
+    firstName: 'Ranch',
+    lastName: 'Market',
+    phoneNumber: '203-867-1212',
+  },
 ];
 
 const getEmployees = () => employees;
