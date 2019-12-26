@@ -1,0 +1,32 @@
+{
+  "employee1": {
+  "firstName": "Alexia",
+  "lastName": "Bourne",
+  "phoneNumber": "615-111-1112",
+  "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
+  },
+  "employee2": {
+    "firstName": "Crystal",
+    "lastName": "Bourne",
+    "phoneNumber": "113-000-1112",
+    "uid": "1234"
+  },
+  "employee3": {
+    "firstName": "Alex",
+    "lastName": "Markus",
+    "phoneNumber": "203-867-1112",
+    "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
+  },
+  "employee4": {
+    "firstName": "Nick",
+    "lastName": "Barkus",
+    "phoneNumber": "203-867-1112",
+    "uid": "1234"
+  },
+  "employee5": {
+    "firstName": "Ranch",
+    "lastName": "Market",
+    "phoneNumber": "203-867-1212",
+    "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
+  }
+}
