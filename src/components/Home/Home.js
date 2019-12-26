@@ -7,6 +7,7 @@ import employeesData from '../../helpers/data/employeesData';
 import StaffRoom from '../StaffRoom/StaffRoom';
 
 import authData from '../../helpers/data/authData';
+import Walks from '../Walks/Walks';
 
 class Home extends React.Component {
   state = {
@@ -41,10 +42,16 @@ class Home extends React.Component {
     return (
       <div>
         <div className="dogPenDiv">
+          <h2>Dog Pen</h2>
           <DogPen dogs={dogs} />
         </div>
         <div className="staffRoomDiv">
+          <h2>Staff Room</h2>
           <StaffRoom employees={employees} />
+        </div>
+        <div className="walksDiv">
+          <h2>Walks</h2>
+          <Walks />
         </div>
       </div>
     );
