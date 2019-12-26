@@ -2,7 +2,6 @@ import React from 'react';
 
 import dogsData from '../../helpers/data/dogsData';
 import DogPen from '../DogPen/DogPen';
-import Dog from '../Dog/Dog';
 
 import employeesData from '../../helpers/data/employeesData';
 import StaffRoom from '../StaffRoom/StaffRoom';
