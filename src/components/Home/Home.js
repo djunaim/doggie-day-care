@@ -7,18 +7,24 @@ import employeesData from '../../helpers/data/employeesData';
 import StaffRoom from '../StaffRoom/StaffRoom';
 
 import authData from '../../helpers/data/authData';
+
 import Walks from '../Walks/Walks';
+import walksData from '../../helpers/data/walksData';
 
 class Home extends React.Component {
   state = {
     dogs: [],
     employees: [],
+    walks: [],
+    dogName: {},
+    employeeName: {},
   }
 
   componentDidMount() {
     const uid = authData.getUid();
     this.getDogsData(uid);
     this.getEmployeesData(uid);
+    this.getWalksData(uid);
   }
 
   getDogsData = (uid) => {
@@ -37,8 +43,26 @@ class Home extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  getWalksData = (uid) => {
+    walksData.getWalks(uid)
+      .then((walks) => {
+        dogsData.getSingleDog(walks.dogId).then((request) => {
+          this.setState({ dogName: request.data });
+        });
+        employeesData.getSingleEmployee(walks.employeeId).then((request) => {
+          this.setState({ employeeName: request.data });
+        });
+        this.setState({ walks });
+      })
+      .catch((error) => console.error(error));
+  }
+
   render() {
-    const { dogs, employees } = this.state;
+    const {
+      dogs,
+      employees,
+      walks,
+    } = this.state;
     return (
       <div>
         <div className="dogPenDiv">
@@ -51,7 +75,7 @@ class Home extends React.Component {
         </div>
         <div className="walksDiv">
           <h2>Walks</h2>
-          <Walks />
+          <Walks walks={walks} />
         </div>
       </div>
     );
