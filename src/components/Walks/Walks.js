@@ -7,11 +7,7 @@ import Walk from '../Walk/Walk';
 class Walks extends React.Component {
   static propTypes = {
     walks: PropTypes.arrayOf(walkShape.walkShape),
-  }
-
-  state = {
-    dogs: {},
-    employees: {},
+    getWalkId: PropTypes.func,
   }
 
   render() {

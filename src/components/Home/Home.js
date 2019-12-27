@@ -16,8 +16,8 @@ class Home extends React.Component {
     dogs: [],
     employees: [],
     walks: [],
-    dogName: {},
-    employeeName: {},
+    dogName: null,
+    employeeName: null,
   }
 
   componentDidMount() {
@@ -46,11 +46,19 @@ class Home extends React.Component {
   getWalksData = (uid) => {
     walksData.getWalks(uid)
       .then((walks) => {
-        dogsData.getSingleDog(walks.dogId).then((request) => {
-          this.setState({ dogName: request.data });
+        this.setState({ walks });
+      })
+      .catch((error) => console.error(error));
+  }
+
+  getWalkId = (walkId) => {
+    walksData.getSingleWalk(walkId)
+      .then((walks) => {
+        dogsData.getSingleDog(walks.dogId).then((dog) => {
+          this.setState({ dogName: dog.name });
         });
-        employeesData.getSingleEmployee(walks.employeeId).then((request) => {
-          this.setState({ employeeName: request.data });
+        employeesData.getSingleEmployee(walks.employeeId).then((employee) => {
+          this.setState({ employeeName: employee.name });
         });
         this.setState({ walks });
       })
@@ -58,11 +66,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const {
-      dogs,
-      employees,
-      walks,
-    } = this.state;
+    const { dogs, employees, walks } = this.state;
     return (
       <div>
         <div className="dogPenDiv">
@@ -75,7 +79,7 @@ class Home extends React.Component {
         </div>
         <div className="walksDiv">
           <h2>Walks</h2>
-          <Walks walks={walks} />
+          <Walks getWalkId={this.state.getWalkId} walks={walks} />
         </div>
       </div>
     );

@@ -20,4 +20,6 @@ const getWalks = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getWalks };
+const getSingleWalk = (walkId) => axios.get(`${baseUrl}/walks/${walkId}.json`);
+
+export default { getWalks, getSingleWalk };

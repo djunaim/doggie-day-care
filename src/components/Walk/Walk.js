@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import walkShape from '../../helpers/propz/walkShape';
 
 class Walk extends React.Component {
   static propTypes = {
     walk: walkShape.walkShape,
+    getWalkId: PropTypes.func,
+  }
+
+  getSingleWalkId = () => {
+    const { walk, getWalkId } = this.props;
+    getWalkId(walk.id);
   }
 
   render() {
