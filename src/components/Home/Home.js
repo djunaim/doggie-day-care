@@ -16,8 +16,9 @@ class Home extends React.Component {
     dogs: [],
     employees: [],
     walks: [],
-    dogName: null,
-    employeeName: null,
+    dogName: [],
+    employeeFirstName: [],
+    employeeLastName: [],
   }
 
   componentDidMount() {
@@ -46,27 +47,45 @@ class Home extends React.Component {
   getWalksData = (uid) => {
     walksData.getWalks(uid)
       .then((walks) => {
+        walks.forEach((walk) => {
+          walksData.getSingleWalk(walk.id).then(() => {
+            dogsData.getSingleDog(walk.dogId).then((dog) => {
+              this.setState({ dogName: dog.data.name });
+              console.log(walk.id);
+            });
+            employeesData.getSingleEmployee(walk.employeeId).then((employee) => {
+              this.setState({ employeeFirstName: employee.data.firstName, employeeLastName: employee.data.lastName });
+            });
+          });
+        });
         this.setState({ walks });
       })
       .catch((error) => console.error(error));
   }
 
-  getWalkId = (walkId) => {
-    walksData.getSingleWalk(walkId)
-      .then((walks) => {
-        dogsData.getSingleDog(walks.dogId).then((dog) => {
-          this.setState({ dogName: dog.name });
-        });
-        employeesData.getSingleEmployee(walks.employeeId).then((employee) => {
-          this.setState({ employeeName: employee.name });
-        });
-        this.setState({ walks });
-      })
-      .catch((error) => console.error(error));
-  }
+  // getWalkId = (walkId) => {
+  //   walksData.getSingleWalk(walkId)
+  //     .then((walks) => {
+  //       dogsData.getSingleDog(walks.dogId).then((dog) => {
+  //         this.setState({ dogName: dog.name });
+  //       });
+  //       employeesData.getSingleEmployee(walks.employeeId).then((employee) => {
+  //         this.setState({ employeeName: employee.name });
+  //       });
+  //       this.setState({ walks });
+  //     })
+  //     .catch((error) => console.error(error));
+  // }
 
   render() {
-    const { dogs, employees, walks } = this.state;
+    const {
+      dogs,
+      employees,
+      walks,
+      dogName,
+      employeeFirstName,
+      employeeLastName,
+    } = this.state;
     return (
       <div>
         <div className="dogPenDiv">
@@ -79,7 +98,7 @@ class Home extends React.Component {
         </div>
         <div className="walksDiv">
           <h2>Walks</h2>
-          <Walks getWalkId={this.state.getWalkId} walks={walks} />
+          <Walks dogName={dogName} employeeFirstName={employeeFirstName} employeeLastName={employeeLastName} getWalksData={this.state.getWalksData} walks={walks} />
         </div>
       </div>
     );
