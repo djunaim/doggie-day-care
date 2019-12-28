@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import walkShape from '../../helpers/propz/walkShape';
 import Walk from '../Walk/Walk';
+import WalkForm from '../WalkForm/WalkForm';
 
 class Walks extends React.Component {
   static propTypes = {
@@ -13,9 +14,14 @@ class Walks extends React.Component {
     const { walks } = this.props;
     const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} />);
     return (
-      <div className="container">
-        <div className="row">
-          {walkCards}
+      <div>
+        <div>
+        <WalkForm />
+        </div>
+        <div className="container">
+          <div className="row">
+            {walkCards}
+          </div>
         </div>
       </div>
     );
