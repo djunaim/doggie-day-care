@@ -8,15 +8,16 @@ import WalkForm from '../WalkForm/WalkForm';
 class Walks extends React.Component {
   static propTypes = {
     walks: PropTypes.arrayOf(walkShape.walkShape),
+    addWalks: PropTypes.func,
   }
 
   render() {
-    const { walks } = this.props;
+    const { walks, addWalks } = this.props;
     const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} />);
     return (
       <div>
         <div>
-        <WalkForm />
+        <WalkForm addWalks={addWalks} />
         </div>
         <div className="container">
           <div className="row">

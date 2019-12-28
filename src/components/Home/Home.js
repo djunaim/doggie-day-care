@@ -49,6 +49,15 @@ class Home extends React.Component {
       .catch((error) => console.error(error));
   };
 
+  addWalks = (newWalk) => {
+    const uid = authData.getUid();
+    walksData.addWalks(newWalk)
+      .then(() => {
+        this.getWalksData(uid);
+      })
+      .catch((error) => console.error(error));
+  }
+
   render() {
     const { dogs, employees, walks } = this.state;
     return (
@@ -63,7 +72,7 @@ class Home extends React.Component {
         </div>
         <div className="walksDiv">
           <h2>Walks</h2>
-          <Walks walks={walks} />
+          <Walks walks={walks} addWalks={this.addWalks} />
         </div>
       </div>
     );
