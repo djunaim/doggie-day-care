@@ -1,28 +1,47 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import walkShape from '../../helpers/propz/walkShape';
 
+import employeesData from '../../helpers/data/employeesData';
+import dogsData from '../../helpers/data/dogsData';
+
 class Walk extends React.Component {
-  static propTypes = {
-    walk: walkShape.walkShape,
-    dogName: PropTypes.string,
-    employeeFirstName: PropTypes.string,
-    employeeLastName: PropTypes.string,
+  state = {
+    employeeFirstName: [],
+    employeeLastName: [],
+    dogName: '',
   }
 
-  // componentDidMount() {
-  //   const { walk, getWalkId } = this.props;
-  //   getWalkId(walk.id);
-  // }
+  static propTypes = {
+    walk: walkShape.walkShape,
+  }
+
+  getSingleEmployee = () => {
+    const { walk } = this.props;
+    employeesData.getSingleEmployee(walk.employeeId)
+      .then((response) => {
+        this.setState({ employeeFirstName: response.data.firstName, employeeLastName: response.data.lastName });
+      })
+      .catch((error) => console.error(error));
+  }
+
+  getSingleDog = () => {
+    const { walk } = this.props;
+    dogsData.getSingleDog(walk.dogId)
+      .then((response) => {
+        this.setState({ dogName: response.data.name });
+      })
+      .catch((error) => console.error(error));
+  }
+
+  componentDidMount() {
+    this.getSingleEmployee();
+    this.getSingleDog();
+  }
 
   render() {
-    const {
-      walk,
-      dogName,
-      employeeFirstName,
-      employeeLastName,
-    } = this.props;
+    const { walk } = this.props;
+    const { employeeFirstName, employeeLastName, dogName } = this.state;
     return (
       <div className="Walk col-md-3">
       <div className="card">
