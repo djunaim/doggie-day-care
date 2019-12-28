@@ -7,4 +7,4 @@ const employeeShape = PropTypes.shape({
   phoneNumber: PropTypes.string.isRequired,
 });
 
-export default employeeShape;
+export default { employeeShape };
