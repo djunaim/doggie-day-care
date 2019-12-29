@@ -33,9 +33,6 @@ class WalkForm extends React.Component {
   }
 
   handleDogChange = (e) => {
-    // const { selectedIndex } = e.target.options;
-    // console.log(e.target.options[selectedIndex].getAttribute('id'));
-    console.log(e.target.value);
     this.setState({ dogName: e.target.value });
   }
 
@@ -43,14 +40,13 @@ class WalkForm extends React.Component {
     this.setState({ employeeName: e.target.value });
   }
 
-  // createDogOptions = () => {
-  //   const { dogs } = this.props;
-  //   dogs.map((dog) => (
-  //     (<option key={dog.id} value={dog.name}>{dog.name}</option>)));
-  // }
+  handleDateChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ date: e.target.value });
+  }
 
   render() {
-    const { dogName, employeeName } = this.state;
+    const { dogName, employeeName, date } = this.state;
     const { dogs, employees } = this.props;
     return (
       <div>
@@ -82,11 +78,13 @@ class WalkForm extends React.Component {
           <div className="input-group">
             <label htmlFor="date">Date: </label>
             <input
-              type="date"
               className="form-control"
               id="date"
-              value={() => {}}
-              onChange={() => {}}
+              dateFormat="MM/dd/yyyy"
+              type="date"
+              selected={date}
+              value={date}
+              onChange={this.handleDateChange}
               />
           </div>
           <div>
