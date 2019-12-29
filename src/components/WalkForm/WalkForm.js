@@ -33,7 +33,14 @@ class WalkForm extends React.Component {
   }
 
   handleDogChange = (e) => {
+    // const { selectedIndex } = e.target.options;
+    // console.log(e.target.options[selectedIndex].getAttribute('id'));
     console.log(e.target.value);
+    this.setState({ dogName: e.target.value });
+  }
+
+  handleEmployeeChange = (e) => {
+    this.setState({ employeeName: e.target.value });
   }
 
   // createDogOptions = () => {
@@ -43,8 +50,8 @@ class WalkForm extends React.Component {
   // }
 
   render() {
-    const { dogName } = this.state;
-    const { dogs } = this.props;
+    const { dogName, employeeName } = this.state;
+    const { dogs, employees } = this.props;
     return (
       <div>
         <form className='WalkForm col-6 offset-3'>
@@ -54,7 +61,7 @@ class WalkForm extends React.Component {
               <option>Choose One...</option>
               {
               dogs.map((dog) => (
-                (<option key={dog.id} value={dog.name}>{dog.name}</option>)))
+                (<option key={dog.id} value={dog.id}>{dog.name}</option>)))
               }
             </select>
           </div>
@@ -63,11 +70,13 @@ class WalkForm extends React.Component {
             <select
               className="form-control"
               id="employeeName"
-              onChange={() => {}}>
+              value={ employeeName }
+              onChange={this.handleEmployeeChange}>
               <option defaultValue>Choose One...</option>
-              <option>Alexia Bourne</option>
-              <option>Alex Markus</option>
-              <option>Ranch Market</option>
+              {
+              employees.map((employee) => (
+                (<option key={employee.id} value={employee.id}>{employee.firstName} {employee.lastName}</option>)))
+              }
             </select>
           </div>
           <div className="input-group">
