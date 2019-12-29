@@ -2,43 +2,43 @@
   "walk1": {
     "dogId": "dog2",
     "employeeId": "employee1",
-    "date": "12/26/2020",
+    "date": "2020-12-26",
     "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
   },
   "walk2": {
     "dogId": "dog3",
     "employeeId": "employee1",
-    "date": "12/26/2020",
+    "date": "2020-12-26",
     "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
   },
   "walk3": {
     "dogId": "dog10",
     "employeeId": "employee1",
-    "date": "12/26/2020",
+    "date": "2020-12-26",
     "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
   },
   "walk4": {
     "dogId": "dog4",
     "employeeId": "employee3",
-    "date": "2/26/2020",
+    "date": "2020-02-26",
     "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
   },
   "walk5": {
     "dogId": "dog2",
     "employeeId": "employee3",
-    "date": "2/26/2020",
+    "date": "2020-02-26",
     "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
   },
   "walk6": {
     "dogId": "dog1",
     "employeeId": "employee3",
-    "date": "2/26/2020",
+    "date": "2020-02-26",
     "uid": "DSrXFJryFjMZyqhARFsyfQWZYJe2"
   },
   "walk7": {
     "dogId": "dog10",
     "employeeId": "employee5",
-    "date": "1/26/2020",
+    "date": "2020-01-26",
     "uid": "1234"
   }
 }

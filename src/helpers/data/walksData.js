@@ -22,4 +22,7 @@ const getWalks = (uid) => new Promise((resolve, reject) => {
 
 const getSingleWalk = (walkId) => axios.get(`${baseUrl}/walks/${walkId}.json`);
 
-export default { getWalks, getSingleWalk };
+const addWalks = (walkInfo) => axios.post(`${baseUrl}/walks.json`, walkInfo);
+
+
+export default { getWalks, getSingleWalk, addWalks };
