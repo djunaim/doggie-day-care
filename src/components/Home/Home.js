@@ -72,7 +72,7 @@ class Home extends React.Component {
         </div>
         <div className="walksDiv">
           <h2>Walks</h2>
-          <Walks walks={walks} addWalks={this.addWalks} />
+          <Walks walks={walks} dogs={dogs} employees={employees} addWalks={this.addWalks} />
         </div>
       </div>
     );

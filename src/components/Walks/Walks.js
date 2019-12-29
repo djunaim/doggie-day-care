@@ -5,19 +5,30 @@ import walkShape from '../../helpers/propz/walkShape';
 import Walk from '../Walk/Walk';
 import WalkForm from '../WalkForm/WalkForm';
 
+import employeeShape from '../../helpers/propz/employeeShape';
+
+import dogShape from '../../helpers/propz/dogShape';
+
 class Walks extends React.Component {
   static propTypes = {
     walks: PropTypes.arrayOf(walkShape.walkShape),
+    employees: PropTypes.arrayOf(employeeShape.employeeShape),
+    dogs: PropTypes.arrayOf(dogShape.dogShape),
     addWalks: PropTypes.func,
   }
 
   render() {
-    const { walks, addWalks } = this.props;
+    const {
+      walks,
+      dogs,
+      employees,
+      addWalks,
+    } = this.props;
     const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} />);
     return (
       <div>
         <div>
-        <WalkForm addWalks={addWalks} />
+        <WalkForm addWalks={addWalks} dogs={dogs} employees={employees} />
         </div>
         <div className="container">
           <div className="row">

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import authData from '../../helpers/data/authData';
 
+import employeeShape from '../../helpers/propz/employeeShape';
+import dogShape from '../../helpers/propz/dogShape';
+
 class WalkForm extends React.Component {
   state = {
     employeeName: '',
@@ -12,6 +15,8 @@ class WalkForm extends React.Component {
 
   static propTypes = {
     addWalks: PropTypes.func,
+    employees: PropTypes.arrayOf(employeeShape.employeeShape),
+    dogs: PropTypes.arrayOf(dogShape.dogShape),
   }
 
   addWalkEvent = (e) => {
@@ -27,21 +32,30 @@ class WalkForm extends React.Component {
     this.setState({ employeeName: '', dogName: '', date: '' });
   }
 
+  handleDogChange = (e) => {
+    console.log(e.target.value);
+  }
+
+  // createDogOptions = () => {
+  //   const { dogs } = this.props;
+  //   dogs.map((dog) => (
+  //     (<option key={dog.id} value={dog.name}>{dog.name}</option>)));
+  // }
+
   render() {
+    const { dogName } = this.state;
+    const { dogs } = this.props;
     return (
       <div>
         <form className='WalkForm col-6 offset-3'>
         <div className="input-group mb-3">
             <label htmlFor="dogName">Dog Name: </label>
-            <select className="form-control" id="dogName" onChange={() => {}}>
-              <option defaultChecked>Choose One...</option>
-              <option>Meep</option>
-              <option>Chocolate</option>
-              <option>Flower</option>
-              <option>Bunny</option>
-              <option>Fluffer Nutter</option>
-              <option>Buddy</option>
-              <option>Reckless</option>
+            <select className="form-control" value={dogName} id="dogName" onChange={this.handleDogChange}>
+              <option>Choose One...</option>
+              {
+              dogs.map((dog) => (
+                (<option key={dog.id} value={dog.name}>{dog.name}</option>)))
+              }
             </select>
           </div>
           <div className="input-group mb-3">
@@ -50,7 +64,7 @@ class WalkForm extends React.Component {
               className="form-control"
               id="employeeName"
               onChange={() => {}}>
-              <option defaultChecked>Choose One...</option>
+              <option defaultValue>Choose One...</option>
               <option>Alexia Bourne</option>
               <option>Alex Markus</option>
               <option>Ranch Market</option>
