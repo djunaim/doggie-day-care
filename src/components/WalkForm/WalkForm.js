@@ -41,7 +41,6 @@ class WalkForm extends React.Component {
   }
 
   handleDateChange = (e) => {
-    console.log(e.target.value);
     this.setState({ date: e.target.value });
   }
 
@@ -80,9 +79,8 @@ class WalkForm extends React.Component {
             <input
               className="form-control"
               id="date"
-              dateFormat="MM/dd/yyyy"
+              format="mm/dd/yyyy"
               type="date"
-              selected={date}
               value={date}
               onChange={this.handleDateChange}
               />
