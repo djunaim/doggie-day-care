@@ -16,6 +16,9 @@ class Home extends React.Component {
     dogs: [],
     employees: [],
     walks: [],
+    walkToEdit: {},
+    editMode: false,
+    showWalkForm: false,
   }
 
   componentDidMount() {
@@ -67,8 +70,37 @@ class Home extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  updateWalk = (walkId, updatedWalk) => {
+    const uid = authData.getUid();
+    walksData.updateWalks(walkId, updatedWalk)
+      .then(() => {
+        this.getWalksData(uid);
+        this.setState({ editMode: false, showWalkForm: false });
+      })
+      .catch((error) => console.error(error));
+  }
+
+  setEditMode = (editMode) => {
+    this.setState({ editMode, showWalkForm: true });
+  }
+
+  setWalkToEdit = (walk) => {
+    this.setState({ walkToEdit: walk });
+  }
+
+  setShowWalkForm = () => {
+    this.setState({ showWalkForm: true });
+  }
+
   render() {
-    const { dogs, employees, walks } = this.state;
+    const {
+      dogs,
+      employees,
+      walks,
+      walkToEdit,
+      editMode,
+      showWalkForm,
+    } = this.state;
     return (
       <div>
         <div className="dogPenDiv">
@@ -81,7 +113,7 @@ class Home extends React.Component {
         </div>
         <div className="walksDiv">
           <h2>Walks</h2>
-          <Walks walks={walks} dogs={dogs} employees={employees} addWalks={this.addWalks} deleteSingleWalk={this.deleteSingleWalk} />
+          <Walks walks={walks} dogs={dogs} employees={employees} walkToEdit={walkToEdit} editMode={editMode} showWalkForm={showWalkForm} addWalks={this.addWalks} deleteSingleWalk={this.deleteSingleWalk} updateWalk={this.updateWalk} setEditMode={this.setEditMode} setWalkToEdit={this.setWalkToEdit} setShowWalkForm={this.setShowWalkForm} />
         </div>
       </div>
     );
