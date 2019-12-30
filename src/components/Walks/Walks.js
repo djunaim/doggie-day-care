@@ -43,7 +43,7 @@ class Walks extends React.Component {
     return (
       <div>
         <div>
-          <button onClick={this.setShowWalkForm}>Add New Walk</button>
+          <button onClick={this.props.setShowWalkForm}>Add New Walk</button>
           {
             showWalkForm && <WalkForm addWalks={addWalks} dogs={dogs} employees={employees} editMode={editMode} walkToEdit={walkToEdit} updateWalk={updateWalk} />
           }

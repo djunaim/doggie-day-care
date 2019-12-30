@@ -7,17 +7,17 @@ import employeesData from '../../helpers/data/employeesData';
 import dogsData from '../../helpers/data/dogsData';
 
 class Walk extends React.Component {
-  state = {
-    employeeFirstName: [],
-    employeeLastName: [],
-    dogName: '',
-  }
-
   static propTypes = {
     walk: walkShape.walkShape,
     deleteSingleWalk: PropTypes.func,
     setEditMode: PropTypes.func,
     setWalkToEdit: PropTypes.func,
+  }
+
+  state = {
+    employeeFirstName: [],
+    employeeLastName: [],
+    dogName: '',
   }
 
   deleteSingleWalkEvent = (e) => {
