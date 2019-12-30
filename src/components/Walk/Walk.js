@@ -15,8 +15,8 @@ class Walk extends React.Component {
   }
 
   state = {
-    employeeFirstName: [],
-    employeeLastName: [],
+    employeeFirstName: '',
+    employeeLastName: '',
     dogName: '',
   }
 
