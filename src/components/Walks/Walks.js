@@ -16,6 +16,13 @@ class Walks extends React.Component {
     dogs: PropTypes.arrayOf(dogShape.dogShape),
     addWalks: PropTypes.func,
     deleteSingleWalk: PropTypes.func,
+    walkToEdit: PropTypes.array,
+    editMode: PropTypes.bool,
+    showWalkForm: PropTypes.bool,
+    updateWalk: PropTypes.func,
+    setEditMode: PropTypes.func,
+    setWalkToEdit: PropTypes.func,
+    setShowWalkForm: PropTypes.func,
   }
 
   render() {
@@ -25,12 +32,21 @@ class Walks extends React.Component {
       employees,
       addWalks,
       deleteSingleWalk,
+      walkToEdit,
+      editMode,
+      showWalkForm,
+      updateWalk,
+      setEditMode,
+      setWalkToEdit,
     } = this.props;
-    const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} deleteSingleWalk={deleteSingleWalk} />);
+    const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} deleteSingleWalk={deleteSingleWalk} setEditMode={setEditMode} setWalkToEdit={setWalkToEdit} />);
     return (
       <div>
         <div>
-        <WalkForm addWalks={addWalks} dogs={dogs} employees={employees} />
+          <button onClick={this.setShowWalkForm}>Add New Walk</button>
+          {
+            showWalkForm && <WalkForm addWalks={addWalks} dogs={dogs} employees={employees} editMode={editMode} walkToEdit={walkToEdit} updateWalk={updateWalk} />
+          }
         </div>
         <div className="container">
           <div className="row">

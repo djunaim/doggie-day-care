@@ -113,7 +113,7 @@ class Home extends React.Component {
         </div>
         <div className="walksDiv">
           <h2>Walks</h2>
-          <Walks walks={walks} dogs={dogs} employees={employees} walkToEdit={walkToEdit} editMode={editMode} showWalkForm={showWalkForm} addWalks={this.addWalks} deleteSingleWalk={this.deleteSingleWalk} />
+          <Walks walks={walks} dogs={dogs} employees={employees} walkToEdit={walkToEdit} editMode={editMode} showWalkForm={showWalkForm} addWalks={this.addWalks} deleteSingleWalk={this.deleteSingleWalk} updateWalk={this.updateWalk} setEditMode={this.setEditMode} setWalkToEdit={this.setWalkToEdit} setShowWalkForm={this.setShowWalkForm} />
         </div>
       </div>
     );

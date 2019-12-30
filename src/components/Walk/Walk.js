@@ -16,6 +16,8 @@ class Walk extends React.Component {
   static propTypes = {
     walk: walkShape.walkShape,
     deleteSingleWalk: PropTypes.func,
+    setEditMode: PropTypes.func,
+    setWalkToEdit: PropTypes.func,
   }
 
   deleteSingleWalkEvent = (e) => {
@@ -42,6 +44,13 @@ class Walk extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  setEditMode = (e) => {
+    const { setEditMode, setWalkToEdit, walk } = this.props;
+    e.preventDefault();
+    setEditMode(true);
+    setWalkToEdit(walk);
+  }
+
   componentDidMount() {
     this.getSingleEmployee();
     this.getSingleDog();
@@ -58,7 +67,7 @@ class Walk extends React.Component {
           <p className="card-text">{employeeFirstName} {employeeLastName}</p>
           <p className="card-text">{walk.date}</p>
           <button className="btn btn-danger" onClick={this.deleteSingleWalkEvent}>Delete Walk</button>
-          <button className="btn btn-secondary" onClick={() => {}}>Edit Walk</button>
+          <button className="btn btn-secondary" onClick={this.setEditMode}>Edit Walk</button>
         </div>
       </div>
     </div>
