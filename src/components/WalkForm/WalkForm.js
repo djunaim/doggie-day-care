@@ -5,6 +5,7 @@ import authData from '../../helpers/data/authData';
 
 import employeeShape from '../../helpers/propz/employeeShape';
 import dogShape from '../../helpers/propz/dogShape';
+import walkShape from '../../helpers/propz/walkShape';
 
 class WalkForm extends React.Component {
   state = {
@@ -17,8 +18,9 @@ class WalkForm extends React.Component {
     addWalks: PropTypes.func,
     employees: PropTypes.arrayOf(employeeShape.employeeShape),
     dogs: PropTypes.arrayOf(dogShape.dogShape),
-    walkToEdit: PropTypes.array,
+    walkToEdit: walkShape.walkShape,
     editMode: PropTypes.bool,
+    updateWalk: PropTypes.func,
   }
 
   componentDidMount() {

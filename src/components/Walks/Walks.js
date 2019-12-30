@@ -16,7 +16,7 @@ class Walks extends React.Component {
     dogs: PropTypes.arrayOf(dogShape.dogShape),
     addWalks: PropTypes.func,
     deleteSingleWalk: PropTypes.func,
-    walkToEdit: PropTypes.array,
+    walkToEdit: PropTypes.object,
     editMode: PropTypes.bool,
     showWalkForm: PropTypes.bool,
     updateWalk: PropTypes.func,
