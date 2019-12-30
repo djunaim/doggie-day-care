@@ -15,6 +15,7 @@ class Walks extends React.Component {
     employees: PropTypes.arrayOf(employeeShape.employeeShape),
     dogs: PropTypes.arrayOf(dogShape.dogShape),
     addWalks: PropTypes.func,
+    deleteSingleWalk: PropTypes.func,
   }
 
   render() {
@@ -23,8 +24,9 @@ class Walks extends React.Component {
       dogs,
       employees,
       addWalks,
+      deleteSingleWalk,
     } = this.props;
-    const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} />);
+    const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} deleteSingleWalk={deleteSingleWalk} />);
     return (
       <div>
         <div>
