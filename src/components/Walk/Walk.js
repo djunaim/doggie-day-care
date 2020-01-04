@@ -65,7 +65,7 @@ class Walk extends React.Component {
   findDogName = () => {
     const { dogs, walk } = this.props;
     const getDogName = dogs.find((dog) => dog.id === walk.dogId);
-    return getDogName.name;
+    return `${getDogName.name}`;
   }
 
   componentDidMount() {
@@ -75,12 +75,11 @@ class Walk extends React.Component {
 
   render() {
     const { walk } = this.props;
-    const { employeeFirstName, employeeLastName, dogName } = this.state;
     return (
       <div className="Walk col-md-3">
       <div className="card">
         <div className="card-body">
-          <p className="card-text">{dogName}</p>
+          <p className="card-text">{this.findDogName()}</p>
           <p className="card-text">{this.findEmployeeName()}</p>
           <p className="card-text">{walk.date}</p>
           <button className="btn btn-danger" onClick={this.deleteSingleWalkEvent}>Delete Walk</button>
