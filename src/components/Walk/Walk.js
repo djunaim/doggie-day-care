@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import walkShape from '../../helpers/propz/walkShape';
 
 import employeesData from '../../helpers/data/employeesData';
+import employeeShape from '../../helpers/propz/employeeShape';
+
 import dogsData from '../../helpers/data/dogsData';
+import dogShape from '../../helpers/propz/dogShape';
 
 class Walk extends React.Component {
   static propTypes = {
@@ -12,6 +15,8 @@ class Walk extends React.Component {
     deleteSingleWalk: PropTypes.func,
     setEditMode: PropTypes.func,
     setWalkToEdit: PropTypes.func,
+    employees: PropTypes.arrayOf(employeeShape.employeeShape),
+    dogs: PropTypes.arrayOf(dogShape.dogShape),
   }
 
   state = {
@@ -51,6 +56,18 @@ class Walk extends React.Component {
     setWalkToEdit(walk);
   }
 
+  findEmployeeName = () => {
+    const { employees, walk } = this.props;
+    const getEmployeeName = employees.find((employee) => employee.id === walk.employeeId);
+    return `${getEmployeeName.firstName} ${getEmployeeName.lastName}`;
+  }
+
+  findDogName = () => {
+    const { dogs, walk } = this.props;
+    const getDogName = dogs.find((dog) => dog.id === walk.dogId);
+    return getDogName.name;
+  }
+
   componentDidMount() {
     this.getSingleEmployee();
     this.getSingleDog();
@@ -64,7 +81,7 @@ class Walk extends React.Component {
       <div className="card">
         <div className="card-body">
           <p className="card-text">{dogName}</p>
-          <p className="card-text">{employeeFirstName} {employeeLastName}</p>
+          <p className="card-text">{this.findEmployeeName()}</p>
           <p className="card-text">{walk.date}</p>
           <button className="btn btn-danger" onClick={this.deleteSingleWalkEvent}>Delete Walk</button>
           <button className="btn btn-secondary" onClick={this.setEditMode}>Edit Walk</button>

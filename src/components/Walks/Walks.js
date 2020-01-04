@@ -39,7 +39,7 @@ class Walks extends React.Component {
       setEditMode,
       setWalkToEdit,
     } = this.props;
-    const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} deleteSingleWalk={deleteSingleWalk} setEditMode={setEditMode} setWalkToEdit={setWalkToEdit} />);
+    const walkCards = walks.map((walk) => <Walk key={walk.id} walk={walk} deleteSingleWalk={deleteSingleWalk} setEditMode={setEditMode} setWalkToEdit={setWalkToEdit} employees={employees} dogs={dogs} />);
     return (
       <div>
         <div>
