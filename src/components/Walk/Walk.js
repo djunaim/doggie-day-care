@@ -69,8 +69,8 @@ class Walk extends React.Component {
   }
 
   componentDidMount() {
-    this.getSingleEmployee();
-    this.getSingleDog();
+    this.findDogName();
+    this.findEmployeeName();
   }
 
   render() {
