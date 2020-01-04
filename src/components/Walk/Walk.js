@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 
 import walkShape from '../../helpers/propz/walkShape';
 
-import employeesData from '../../helpers/data/employeesData';
 import employeeShape from '../../helpers/propz/employeeShape';
 
-import dogsData from '../../helpers/data/dogsData';
 import dogShape from '../../helpers/propz/dogShape';
 
 class Walk extends React.Component {
@@ -29,24 +27,6 @@ class Walk extends React.Component {
     e.preventDefault();
     const { deleteSingleWalk, walk } = this.props;
     deleteSingleWalk(walk.id);
-  }
-
-  getSingleEmployee = () => {
-    const { walk } = this.props;
-    employeesData.getSingleEmployee(walk.employeeId)
-      .then((response) => {
-        this.setState({ employeeFirstName: response.data.firstName, employeeLastName: response.data.lastName });
-      })
-      .catch((error) => console.error(error));
-  }
-
-  getSingleDog = () => {
-    const { walk } = this.props;
-    dogsData.getSingleDog(walk.dogId)
-      .then((response) => {
-        this.setState({ dogName: response.data.name });
-      })
-      .catch((error) => console.error(error));
   }
 
   setEditMode = (e) => {
