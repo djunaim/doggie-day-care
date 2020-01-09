@@ -15,7 +15,9 @@ While the user is browsing around, they can also set up a schedule for their pre
 * React
 
 ## Screenshots
-![]()
+![dog pen](https://raw.githubusercontent.com/djunaim/doggie-day-care/master/src/screenshots/dogPen.PNG)
+![staff room](https://raw.githubusercontent.com/djunaim/doggie-day-care/master/src/screenshots/staffRoom.PNG)
+![walks](https://raw.githubusercontent.com/djunaim/doggie-day-care/master/src/screenshots/walks.PNG)
 
 ## Run this Project
 * Clone down project from Github
